@@ -18,6 +18,6 @@ def sas2pd(sasfile):
     return df
 
 if __name__ == '__main__':
-    sasclass = sas2pd("C:\Program Files\SASHome\SASFoundation\9.3\core\sashelp\class.sas7bdat")
+    sasclass = sas2pd("class.sas7bdat")
     from ggplot import *
     print ggplot(sasclass, aes('Height', 'Weight')) + geom_point() + stat_smooth(color='red')
