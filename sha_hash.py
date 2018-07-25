@@ -36,6 +36,6 @@ class sha_hash():
         return len(set(x)) == len(x)
 
 
-h = sha_hash("Dupa", 12)
-h.hashid('101-017')
-h.hashid('101-002')
+h = sha_hash("4klfgh6*", 12)
+print(h.hashid('101-017'))
+print(h.hashid('101-002'))

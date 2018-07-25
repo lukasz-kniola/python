@@ -16,7 +16,7 @@
 
 %mend msha_hash;
 
-%let h = %msha_hash(101-001, Dupa, 12);
+%let h = %msha_hash(101-001, 4klfgh6*, 12);
 %put &h;
 
 
@@ -37,7 +37,7 @@
 data a;
   do i=1 to 20;
     subjid = '101-'||put(i,z3.);
-    %sha_hash(subjid, "Dupa", 12);
+    %sha_hash(subjid, "4klfgh6*", 12);
     output;
   end;
 run;
