@@ -17,9 +17,7 @@ class sha_hash():
 
     @staticmethod
     def sha_it(s):
-        b = hashlib.sha256()
-        b.update(s.encode())
-        return b.hexdigest().upper()
+        return hashlib.sha256(s.encode()).hexdigest().upper()
         
     def hashid(self, id):
         a = '13' + self.keyx1 + id + self.keyx2 + self.keyx3
@@ -37,5 +35,6 @@ class sha_hash():
 
 
 h = sha_hash("4klfgh6*", 12)
-print(h.hashid('101-017'))
+print(h.hashid('101-001'))
 print(h.hashid('101-002'))
+print(h.hashid('101-017'))
