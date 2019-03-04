@@ -13,7 +13,7 @@ db.update({'age':41},query.name == 'Lukasz')
 
 db.update({'car':'Kia'},query.name == 'Lukasz')
 
-babcia = {'age': 76, 'address': 'Bydgoszcz', 'car': 'Fiat'}
+babcia = {'dob': {'y': 1943, 'm': 1}, 'age': 76, 'address': 'Bydgoszcz', 'car': 'Fiat'}
 
 db.insert({'name': 'Gizela', 'details': babcia})
 
@@ -24,4 +24,7 @@ for doc in db.search(where('age') >= 40):
     print(doc.doc_id)
 
 print(db.get(where('name') == 'Maja'))
-print(db.search((query.details.age > 40) | (query.age > 40)))
+print(db.search((query.details.dob.y == 1943) | (query.age > 40)))
+
+names = db.table('names')
+names.insert_multiple([{'name': 'Lukasz'}, {'name': 'Joanna'}, {'name': 'Maja'}, {'name': 'Adam'}])
