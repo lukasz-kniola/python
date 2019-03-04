@@ -25,7 +25,9 @@ for doc in family.search(where('age') >= 40):
     print(doc['name'])
     print(doc.doc_id)
 
-print(family.get(where('name') == 'Maja'))
+maja = family.get(where('name') == 'Maja')
+print(maja)
+print(maja.doc_id)
 print(family.search((query.details.dob.y == 1943) | (query.age > 40)))
 
 names = db.table('names')
