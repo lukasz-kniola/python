@@ -3,28 +3,30 @@ from tinydb import TinyDB, Query, where
 db = TinyDB('tinydb_test.json')
 query = Query()
 
-db.purge()
-db.insert({'name': 'Lukasz', 'age': 40})
-db.insert({'name': 'Joanna', 'age': 40})
-db.insert({'name': 'Maja', 'age': 13})
-db.insert({'name': 'Adam', 'age': 7})
+family = db.table('family')
 
-db.update({'age':41},query.name == 'Lukasz')
+family.purge()
+family.insert({'name': 'Lukasz', 'age': 40})
+family.insert({'name': 'Joanna', 'age': 40})
+family.insert({'name': 'Maja', 'age': 13})
+family.insert({'name': 'Adam', 'age': 7})
 
-db.update({'car':'Kia'},query.name == 'Lukasz')
+family.update({'age':41},query.name == 'Lukasz')
+
+family.update({'car':'Kia'},query.name == 'Lukasz')
 
 babcia = {'dob': {'y': 1943, 'm': 1}, 'age': 76, 'address': 'Bydgoszcz', 'car': 'Fiat'}
 
-db.insert({'name': 'Gizela', 'details': babcia})
+family.insert({'name': 'Gizela', 'details': babcia})
 
-print(db.count(query))
+print(family.count(query))
 
-for doc in db.search(where('age') >= 40):
+for doc in family.search(where('age') >= 40):
     print(doc['name'])
     print(doc.doc_id)
 
-print(db.get(where('name') == 'Maja'))
-print(db.search((query.details.dob.y == 1943) | (query.age > 40)))
+print(family.get(where('name') == 'Maja'))
+print(family.search((query.details.dob.y == 1943) | (query.age > 40)))
 
 names = db.table('names')
 names.insert_multiple([{'name': 'Lukasz'}, {'name': 'Joanna'}, {'name': 'Maja'}, {'name': 'Adam'}])
