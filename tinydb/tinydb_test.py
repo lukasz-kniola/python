@@ -13,13 +13,15 @@ db.update({'age':41},query.name == 'Lukasz')
 
 db.update({'car':'Kia'},query.name == 'Lukasz')
 
+babcia = {'age': 76, 'address': 'Bydgoszcz', 'car': 'Fiat'}
 
-print(db.search(query.age >= 40))
+db.insert({'name': 'Gizela', 'details': babcia})
+
 print(db.count(query))
-print(db.all())
 
 for doc in db.search(where('age') >= 40):
     print(doc['name'])
     print(doc.doc_id)
 
 print(db.get(where('name') == 'Maja'))
+print(db.search((query.details.age > 40) | (query.age > 40)))
